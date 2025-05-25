@@ -1,71 +1,220 @@
-/* src/index.css */
+/* Import Bootstrap */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Import Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+/* Custom styles for a light, modern, interactive UI */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: #213547;
+  background-color: #f7f9fb;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f7f9fb;
+  color: #213547;
+}
+
+/* Button styles */
+button {
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  padding: 0.6em 1.4em;
+  font-size: 1.05em;
+  font-weight: 600;
+  font-family: inherit;
+  background-color: #0d6fe0;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(60, 100, 180, 0.04);
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+  margin-inline-start: 10px;
+}
+button.btn-primary, button.bg-primary {
+  background-color: #22c55e !important;
+  color: #fff !important;
+  border: none;
+}
+button.btn-primary:hover, button.bg-primary:hover {
+  background-color: #16a34a !important;
+}
+button.btn-danger, button.bg-danger {
+  background-color: #ef4444 !important;
+  color: #fff !important;
+  border: none;
+}
+button.btn-danger:hover, button.bg-danger:hover {
+  background-color: #b91c1c !important;
+}
+button.btn-secondary, button.bg-secondary {
+  background-color: #64748b !important;
+  color: #fff !important;
+  border: none;
+}
+button.btn-secondary:hover, button.bg-secondary:hover {
+  background-color: #334155 !important;
+}
+button:hover, button:focus {
+  background-color: #e0eaff;
+  border-color: #90b4f6;
+  color: #174ea6;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(60, 100, 180, 0.10);
+  outline: none;
+}
+button:active {
+  background-color: #d0e0ff;
+  color: #174ea6;
+  transform: scale(0.98);
+}
+
+/* Card styles */
+.card, .border, .list-group-item {
+  border-radius: 16px !important;
+  box-shadow: 0 2px 12px rgba(60, 100, 180, 0.06);
+  background: #fff !important;
+  border: 1px solid #e3e8ee !important;
+  transition: box-shadow 0.2s cubic-bezier(.4,0,.2,1);
+}
+.card:hover, .list-group-item:hover {
+  box-shadow: 0 6px 24px rgba(60, 100, 180, 0.13);
+}
+
+/* Table styles */
+table {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(60, 100, 180, 0.04);
+  overflow: hidden;
+}
+th, td {
+  padding: 0.75em 1em;
+  text-align: center;
+}
+th {
+  background: #e0eaff;
+  color: #174ea6;
+  font-weight: 700;
+  border-bottom: 2px solid #b6d4fe;
+}
+tr {
+  border-bottom: 1px solid #f0f4ff;
+}
+
+/* Gantt Chart bar styles */
+.gantt-bar {
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(60, 100, 180, 0.08);
+  min-width: 40px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #fff;
+}
+
+
+.gantt-bar:hover {
+  transform: scale(1.04);
+  box-shadow: 0 4px 16px rgba(60, 100, 180, 0.13);
+}
+
+/* Interactive metric cards */
+.metric-card {
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(60, 100, 180, 0.06);
+  transition: box-shadow 0.2s, background 0.2s;
+  padding: 1.2em 1.5em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 180px;
+}
+.metric-label {
+  font-size: 1em;
+  color: #64748b;
+  margin-bottom: 0.3em;
+  font-weight: 500;
+}
+.metric-value {
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-bottom: 0.1em;
+}
+.metric-value.blue { color: #3b82f6; }
+.metric-value.green { color: #22c55e; }
+.metric-value.purple { color: #a855f7; }
+.metric-value.orange { color: #f59e42; }
+
+/* Status badge styles */
+.status-badge {
+  display: inline-block;
+  padding: 0.3em 1em;
+  border-radius: 999px;
+  font-size: 1em;
+  font-weight: 600;
+  background: #fde68a;
+  color: #b45309;
+  box-shadow: 0 1px 4px rgba(251, 191, 36, 0.08);
+}
+.status-badge.pending { background: #fde68a; color: #b45309; }
+.status-badge.running { background: #a7f3d0; color: #065f46; }
+.status-badge.completed { background: #d1fae5; color: #065f46; }
+
+/* Link styles */
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 a:hover {
-  color: #535bf2;
+  color: #174ea6;
 }
 
-body {
-   margin-left: 50px;
-   margin-right: 50px;
-} 
-
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Segoe UI', 'Avenir', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #174ea6;
+}
 h1 {
-  font-size: 3.2em;
+  font-size: 2.6em;
   line-height: 1.1;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+/* Remove dark mode media queries */
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .card, .border, .list-group-item {
+    border-radius: 10px !important;
+    padding: 0.5em !important;
   }
-  a:hover {
-    color: #747bff;
+  h1 {
+    font-size: 2em;
   }
-  button {
-    background-color: #f9f9f9;
+  .metric-card {
+    min-width: 120px;
+    padding: 0.7em 0.5em;
+  }
+  .gantt-bar {
+    min-width: 24px;
+    font-size: 0.95em;
   }
 }

@@ -1,92 +1,118 @@
-# AlgoTracer - Operating System Algorithm Visualizer
+# AlgoTracer - CPU Scheduling Algorithm Visualizer
 
-AlgoTracer is an interactive web application built with React and Vite that visualizes various Operating System algorithms. The application provides a user-friendly interface to understand and experiment with different scheduling algorithms through real-time visualization.
-
-## Features
-
-- Interactive visualization of job scheduling algorithms
-- Real-time process execution display
-- Gantt chart visualization
-- Performance metrics calculation
-- Adjustable simulation speed
-- Pause/Resume functionality
-- Support for multiple scheduling algorithms
-
-## Supported Algorithms
-
-### Job Scheduling
-- First Come First Serve (FCFS)
-- Shortest Job First (SJF)
-- Shortest Remaining Time First (SRTF)
-- Longest Remaining Time First (LRTF)
-- Round Robin (RR)
-- Priority Scheduling (Non-preemptive)
-- Priority Scheduling (Preemptive)
+AlgoTracer is a web-based visualization tool for CPU scheduling algorithms. It provides an interactive interface to simulate and compare different scheduling algorithms with detailed performance metrics and visualizations.
 
 ## Project Structure
 
 ```
 src/
-├── algorithms/
-│   └── scheduling.js      # Implementation of scheduling algorithms
-├── components/
-│   ├── GanttChartComponent.jsx    # Gantt chart visualization
-│   ├── LiveExecutionComponent.jsx # Real-time process execution display
-│   ├── ProcessInputForm.jsx       # Process input and algorithm selection
-│   ├── ResultsComponent.jsx       # Performance metrics display
-│   └── SchedulerControls.jsx      # Simulation speed controls
-├── pages/
-│   ├── Home.jsx           # Main landing page
-│   ├── JobScheduling.jsx  # Job scheduling visualization page
-│   └── About.jsx          # About page
-└── App.jsx               # Main application component
+├── algorithms/         # Algorithm implementations
+├── assets/            # Static assets (images, icons)
+├── components/        # React components
+│   ├── comparison/    # Comparison mode components
+│   └── ...
+├── context/          # React context providers
+├── pages/            # Page components
+└── styles/           # CSS styles
 ```
 
-## Component Descriptions
+## Core Components
 
 ### Pages
 
-- **Home.jsx**: Landing page with algorithm category selection
-- **JobScheduling.jsx**: Main page for job scheduling visualization
-- **About.jsx**: Information about the application
+- **JobSchedulingSimulator.jsx**: Main simulator page that manages the overall state and coordination between different components. Handles process scheduling simulation, real-time updates, and simulation controls.
 
 ### Components
 
-- **GanttChartComponent.jsx**
-  - Displays the Gantt chart visualization
-  - Shows process execution timeline
-  - Includes context switch visualization
-  - Color-coded process blocks
+#### Main Components
+- **ProcessInputForm.jsx**: Form component for inputting process details (arrival time, burst time, priority)
+- **LiveExecutionComponent.jsx**: Displays real-time execution of processes
+- **GanttChartComponent.jsx**: Visualizes the scheduling timeline using Gantt charts
+- **ResultsComponent.jsx**: Shows final statistics and metrics for the simulation
 
-- **LiveExecutionComponent.jsx**
-  - Real-time display of process execution
-  - Shows current time and process states
-  - Includes pause/resume functionality
-  - Displays process table with status updates
+#### Comparison Components
+Located in `components/comparison/`:
 
-- **ProcessInputForm.jsx**
-  - Form for process input (PID, arrival time, burst time)
-  - Algorithm selection
-  - Time quantum input for Round Robin
-  - Context switch time configuration
+1. **AlgorithmComparison.jsx**
+   - Main container for comparison mode
+   - Orchestrates all comparison-related components
+   - Handles empty state and layout structure
 
-- **ResultsComponent.jsx**
-  - Displays final performance metrics
-  - Shows average waiting time
-  - Shows average turnaround time
-  - Detailed process statistics
+2. **PerformanceMetricsVisualization.jsx**
+   - Displays various charts and graphs for performance metrics
+   - Features:
+     - Bar charts for individual metrics
+     - Radar chart for overall comparison
+     - Time-based metrics visualization
+     - CPU performance metrics visualization
 
-- **SchedulerControls.jsx**
-  - Controls simulation speed
-  - Speed adjustment slider
+3. **PerformanceMetricsComparison.jsx**
+   - Shows detailed comparison of metrics between algorithms
+   - Features:
+     - Metric-wise ranking of algorithms
+     - Visual indicators for best/worst performers
+     - Formatted metric values with appropriate units
 
-### Algorithms
+4. **OverallPerformanceSummary.jsx**
+   - Provides a comprehensive performance summary
+   - Features:
+     - Overall algorithm rankings
+     - Performance icons and badges
+     - Detailed scoring criteria explanation
+     - Weighted scoring system
 
-- **scheduling.js**
-  - Implementation of all scheduling algorithms
-  - Step-by-step execution generation
-  - Process state management
-  - Performance calculation
+5. **ExecutionTimelineComparison.jsx**
+   - Displays Gantt charts for all algorithms
+   - Features:
+     - Side-by-side comparison of execution timelines
+     - Sorted by overall performance
+     - Responsive grid layout
+
+## Key Features
+
+1. **Multiple Algorithm Support**
+   - First Come First Serve (FCFS)
+   - Shortest Job First (SJF)
+   - Shortest Remaining Time First (SRTF)
+   - Round Robin (RR)
+   - Priority Scheduling
+   - Preemptive Priority Scheduling
+
+2. **Real-time Visualization**
+   - Live process execution display
+   - Interactive Gantt charts
+   - Dynamic updates
+
+3. **Performance Metrics**
+   - Average Waiting Time
+   - Average Turnaround Time
+   - Average Response Time
+   - CPU Utilization
+   - CPU Throughput
+   - Total Execution Time
+
+4. **Comparison Mode**
+   - Side-by-side algorithm comparison
+   - Multiple visualization types
+   - Comprehensive performance analysis
+   - Weighted scoring system
+
+## Technical Details
+
+### Dependencies
+- React.js for UI components
+- Chart.js for data visualization
+- Bootstrap for styling
+- React-Chartjs-2 for React integration with Chart.js
+
+### Performance Metrics Calculation
+- Time-based metrics (70% weight)
+  - Average Waiting Time (25%)
+  - Average Turnaround Time (25%)
+  - Average Response Time (20%)
+- CPU Performance metrics (30% weight)
+  - CPU Throughput (15%)
+  - CPU Utilization (15%)
 
 ## Getting Started
 
@@ -100,26 +126,10 @@ src/
    npm run dev
    ```
 
-## Technologies Used
-
-- React
-- Vite
-- TailwindCSS
-- Framer Motion
-
-## Future Enhancements
-
-- Memory Allocation visualization
-- Paging algorithms
-- Disk Scheduling algorithms
-- More detailed statistics
-- Export functionality for results
-- Custom process arrival patterns
-
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the LICENSE file for details.

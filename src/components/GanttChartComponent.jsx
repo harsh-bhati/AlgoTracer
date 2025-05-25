@@ -3,8 +3,8 @@ const GanttChartComponent = ({ schedule }) => {
 
   // Define static base colors for the first 8 processes
   const baseColors = {
-    idle: '#E5E7EB', // Light gray
-    cs: '#9CA3AF',   // Dark gray for context switch
+    idle: '#cbd5e1', // Light gray from gantt-bar-idle class
+    cs: '#64748b',   // Slate gray for better contrast
     processes: {
       1: 'hsl(210, 70%, 60%)', // Blue
       2: 'hsl(120, 70%, 60%)', // Green
@@ -60,28 +60,36 @@ const GanttChartComponent = ({ schedule }) => {
             {/* Bars */}
             <div className="flex">
               {groupedSchedule.map((group, index) => {
-                const color = group.state === 'idle'
-                  ? baseColors.idle
-                  : group.state === 'cs'
-                    ? baseColors.cs
-                    : getColorForPid(group.state.slice(1));
+                let backgroundColor;
+                let textColor = '#ffffff';
+                let label = '';
+                
+                if (group.state === 'idle') {
+                  backgroundColor = baseColors.idle;
+                  textColor = '#334155'; // Dark text for idle state
+                  label = 'Idle';
+                } else if (group.state === 'cs') {
+                  backgroundColor = baseColors.cs;
+                  label = 'CS';
+                } else {
+                  const pid = group.state.slice(1);
+                  backgroundColor = getColorForPid(pid);
+                  label = `P${pid}`;
+                }
 
                 return (
                   <div
                     key={index}
-                    className="flex items-center justify-center border text-sm"
-                    style={{
-                      backgroundColor: color,
-                      width: `${group.count * 32}px`,
-                      height: '48px',
-                      flexShrink: 0
+                    className="gantt-bar"
+                    style={{ 
+                      width: `${group.count * 32}px`, 
+                      height: '48px', 
+                      flexShrink: 0,
+                      backgroundColor: backgroundColor,
+                      color: textColor
                     }}
                   >
-                    {group.state === 'cs'
-                      ? 'CS'
-                      : group.state === 'idle'
-                        ? 'IDLE'
-                        : group.state.toUpperCase()}
+                    {label}
                   </div>
                 );
               })}

@@ -48,36 +48,34 @@ const ResultsComponent = ({ results }) => {
       </div>
 
       {/* Performance Metrics Section */}
-      <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+      <div className="mt-6 p-4 bg-white rounded-lg shadow-sm">
         <h3 className="text-xl font-semibold mb-4">Performance Metrics</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          <div className="p-3 bg-white rounded shadow">
-            <p className="text-sm text-gray-600">Average Turnaround Time</p>
-            <p className="text-lg font-semibold">{avgTurnaroundTime.toFixed(2)} units</p>
-          </div>
-          <div className="p-3 bg-white rounded shadow">
-            <p className="text-sm text-gray-600">Average Response Time</p>
-            <p className="text-lg font-semibold">{avgResponseTime.toFixed(2)} units</p>
-          </div>
-          <div className="p-3 bg-white rounded shadow">
-            <p className="text-sm text-gray-600">Average Waiting Time</p>
-            <p className="text-lg font-semibold">{avgWaitingTime.toFixed(2)} units</p>
-          </div>
-          <div className="p-3 bg-white rounded shadow">
-            <p className="text-sm text-gray-600">CPU Throughput</p>
-            <p className="text-lg font-semibold">{cpuThroughput} processes/unit</p>
-          </div>
-          <div className="p-3 bg-white rounded shadow">
-            <p className="text-sm text-gray-600">CPU Utilization</p>
-            <p className="text-lg font-semibold">{cpuUtilization}%</p>
-          </div>
-          <div className="p-3 bg-white rounded shadow">
-            <p className="text-sm text-gray-600">Total Processes</p>
-            <p className="text-lg font-semibold">{results.length}</p>
-          </div>
-          <div className="p-3 bg-white rounded shadow">
-            <p className="text-sm text-gray-600">Total Time</p>
-            <p className="text-lg font-semibold">{totalTime} units</p>
+        <div className="w-full flex ">
+          <div className="grid grid-cols-2 gap-4" style={{ maxWidth: 600 }}>
+            <div className="metric-card" style={{ borderLeft: '5px solid #3b82f6' }}>
+              <div className="metric-label" style={{ textTransform: 'uppercase', fontSize: '0.95em' }}>Average Turnaround Time</div>
+              <div className="metric-value blue">{avgTurnaroundTime.toFixed(2)}</div>
+            </div>
+            <div className="metric-card" style={{ borderLeft: '5px solid #22c55e' }}>
+              <div className="metric-label" style={{ textTransform: 'uppercase', fontSize: '0.95em' }}>Average Waiting Time</div>
+              <div className="metric-value green">{avgWaitingTime.toFixed(2)}</div>
+            </div>
+            <div className="metric-card" style={{ borderLeft: '5px solid #f59e42' }}>
+              <div className="metric-label" style={{ textTransform: 'uppercase', fontSize: '0.95em' }}>Average Response Time</div>
+              <div className="metric-value orange">{avgResponseTime.toFixed(2)}</div>
+            </div>
+            <div className="metric-card" style={{ borderLeft: '5px solid #a855f7' }}>
+              <div className="metric-label" style={{ textTransform: 'uppercase', fontSize: '0.95em' }}>CPU Utilization</div>
+              <div className="metric-value purple">{cpuUtilization}%</div>
+            </div>
+            <div className="metric-card" style={{ borderLeft: '5px solid #f59e42' }}>
+              <div className="metric-label" style={{ textTransform: 'uppercase', fontSize: '0.95em' }}>Throughput</div>
+              <div className="metric-value orange">{cpuThroughput}</div>
+            </div>
+            <div className="metric-card" style={{ borderLeft: '5px solid #3b82f6' }}>
+              <div className="metric-label" style={{ textTransform: 'uppercase', fontSize: '0.95em' }}>Total Time</div>
+              <div className="metric-value blue">{totalTime}</div>
+            </div>
           </div>
         </div>
       </div>
