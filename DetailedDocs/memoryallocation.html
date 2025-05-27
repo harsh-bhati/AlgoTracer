@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+    
+<section class="container_docs" data-aos="zoom-in-up">
+  <h1>What is Memory Allocation?</h1>
+  <p>
+    Memory Allocation is the process of assigning blocks of memory to various programs or processes during their execution. It is essential for efficient utilization of the computer’s primary memory (RAM).
+  </p>
+  <p>
+    Proper memory allocation helps in managing memory requests and freeing memory when no longer needed, thus avoiding wastage and fragmentation.
+  </p>
+</section>
+
+<section class="container_docs" data-aos="zoom-in-up">
+  <h1>Types of Memory Allocation</h1>
+  <ul>
+    <li><strong>Static Memory Allocation:</strong> Memory size is fixed at compile time and remains constant during execution.</li>
+    <li><strong>Dynamic Memory Allocation:</strong> Memory is allocated during runtime as per the program’s needs, allowing flexible usage.</li>
+  </ul>
+</section>
+
+<section class="container_docs" data-aos="zoom-in-up">
+  <h1>Memory Allocation Strategies</h1>
+  <p>There are several strategies for allocating memory to processes efficiently:</p>
+  <ul>
+    <li><strong>Contiguous Memory Allocation</strong></li>
+    <li><strong>Non-Contiguous Memory Allocation</strong></li>
+  </ul>
+</section>
+
+<section class="container_docs special" data-aos="zoom-in-up">
+  <h1>1) Contiguous Memory Allocation</h1>
+  <p>
+    In this approach, each process is allocated a single contiguous block of memory. It is simple but prone to fragmentation.
+  </p>
+  <p><strong>Types:</strong></p>
+  <ul>
+    <li><strong>Fixed Partitioning:</strong> Memory is divided into fixed-sized partitions; each process is loaded into a single partition.</li>
+    <li><strong>Dynamic Partitioning:</strong> Partitions vary in size, allocated exactly as per process size requirements.</li>
+  </ul>
+  <h4>Advantages</h4>
+  <ul>
+    <li>Easy to implement and manage.</li>
+    <li>Simple address calculation.</li>
+  </ul>
+  <h4>Disadvantages</h4>
+  <ul>
+    <li>Leads to external fragmentation (wasted memory between allocated blocks).</li>
+    <li>Processes must fit entirely in one block, limiting flexibility.</li>
+  </ul>
+</section>
+
+<section class="container_docs" data-aos="zoom-in-up">
+  <h1>2) Non-Contiguous Memory Allocation</h1>
+  <p>
+    Processes are divided into several parts which are loaded into available memory blocks that may be scattered throughout physical memory.
+  </p>
+  <p><strong>Types:</strong></p>
+  <ul>
+    <li><strong>Paging:</strong> Memory is divided into fixed-size pages and frames; processes are loaded in any available frames.</li>
+    <li><strong>Segmentation:</strong> Memory is divided logically by segment sizes (code, data, stack), and segments are loaded independently.</li>
+  </ul>
+  <h4>Advantages</h4>
+  <ul>
+    <li>Reduces external fragmentation.</li>
+    <li>Allows processes to be larger than physical memory by loading parts as needed.</li>
+  </ul>
+  <h4>Disadvantages</h4>
+  <ul>
+    <li>Requires more complex memory management.</li>
+    <li>Possible internal fragmentation in paging (unused memory within allocated blocks).</li>
+  </ul>
+</section>
+
+<section class="container_docs special" data-aos="zoom-in-up">
+  <h1>Fragmentation</h1>
+  <p><strong>Fragmentation</strong> occurs when free memory is divided into small blocks and cannot be used efficiently.</p>
+  <ul>
+    <li><strong>External Fragmentation:</strong> Free memory is separated into small blocks scattered throughout memory.</li>
+    <li><strong>Internal Fragmentation:</strong> Allocated memory may have unused space inside the allocated block.</li>
+  </ul>
+</section>
+
+<section class="container_docs" data-aos="zoom-in-up">
+  <h1>Common Memory Allocation Algorithms</h1>
+  <ul>
+    <li><strong>First Fit:</strong> Allocates the first sufficiently large block found.</li>
+    <li><strong>Best Fit:</strong> Allocates the smallest block that fits the request, minimizing wasted space.</li>
+    <li><strong>Worst Fit:</strong> Allocates the largest available block to leave bigger free blocks available.</li>
+  </ul>
+</section>
+
+<section class="container_docs" data-aos="zoom-in-up">
+  <h1>Summary</h1>
+  <p>
+    Efficient memory allocation is crucial for optimizing system performance and resource utilization. Each method and strategy has trade-offs related to fragmentation, speed, and complexity.
+  </p>
+  <p>
+    Understanding these methods helps system designers and developers to choose or design suitable memory management techniques.
+  </p>
+</section>
+<div style = "display: flex; justify-content: center;">
+    <button class="goto-simulator-btn" onclick="alert('Coming Soon!')">
+  Go to Simulator
+</button>
+</div>
+
+</body>
+</html>
